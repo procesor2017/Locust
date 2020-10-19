@@ -1,7 +1,14 @@
 ## Link
-http://localhost:8000/?rest_route=/ - api wordpressu
-http://localhost:8000 - wordpress web
+ - http://localhost:8000/?rest_route=/ - api wordpressu
+ - http://localhost:8000 - wordpress web
 
+## Directory
+wp - docker compsoe for wordpress running in docker
+
+## Call from terminal
+``` locust -f webpage.py --host=http://localhost:8080 ```
+
+## Example code
 ```
 import time
 from locust import HttpUser, task, between
@@ -19,7 +26,8 @@ class QuickstartUser(HttpUser):
         for item_id in range(10):
             self.client.get(f"/item?id={item_id}", name="/item")
             time.sleep(1)
-    # Metoda díky které se zapne pro každéího uživatele
+    
+    # Metoda, která se zapne pro každéího uživatele
     def on_start(self):
         self.client.post("/login", json={"username":"foo", "password":"bar"})
 ```
