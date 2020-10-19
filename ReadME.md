@@ -6,7 +6,11 @@
 wp - docker compsoe for wordpress running in docker
 
 ## Call from terminal
+If u dont have confing 
 ``` locust -f webpage.py --host=http://localhost:8080 ```
+
+```locust --host=http://localhost:8080```
+
 
 ## Example code
 ```
