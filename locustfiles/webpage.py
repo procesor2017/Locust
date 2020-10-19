@@ -1,4 +1,4 @@
-from locust import TaskSet, task, between
+from locust import TaskSet, task, between, tag
 
 class IndexPage(TaskSet):
     wait_time = between(0.5, 15)
@@ -9,7 +9,7 @@ class IndexPage(TaskSet):
             if response.elapsed.total_seconds() > 0.9:
                 response.failure("Request took too long")
             if response.text != "Succes":
-                response.failure('Cant connect')
+                print(response.text)
 
     @task
     def index(self):
@@ -19,9 +19,3 @@ class IndexPage(TaskSet):
     def loopForArticles(self):
         for i in range(3):
             self.client.get("/?p={0}".format(i))
-    
-    @task
-    def logInToAdmin(self):
-        response = self.client.post("/wp-login.php", {"user_login":"tesena", "password":"tesena"})
-        if response.status_code != 400:
-            response.failure('Repsonse code is:', response.status_code)
