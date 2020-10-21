@@ -8,6 +8,7 @@ Locust
 └── locustfiles                 # Locust test file 
 │    └── __init__.py            # File for export class to locustfile more in python documentation
 │    └── locustfile.py          # File for start tests
+│    └── restapi.py             # File for calling rest api, doesnt use locust.conf
 │    └── webpage.py             # Tests for webpage
 │    └── wp_admin.py            # Test for wp-admin page
 └── wp                          # Folder with docker file
